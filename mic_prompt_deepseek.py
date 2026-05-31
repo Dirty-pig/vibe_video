@@ -31,7 +31,7 @@ LATEST_AGENT_PAYLOAD_FILE = RUN_OUTPUT_DIR / "latest_agent_payload.json"
 
 DEEPSEEK_BASE_URL = "https://api.deepseek.com"
 DEEPSEEK_MODEL = "deepseek-v4-flash"
-DEEPSEEK_API_KEY = os.environ.get("DEEPSEEK_API_KEY", "sk-430831c27cee4a9d82a3960c53104c9e").strip() or "PASTE_DEEPSEEK_KEY_HERE"
+DEEPSEEK_API_KEY = os.environ.get("DEEPSEEK_API_KEY", "").strip()
 DEFAULT_MODE = "feature"
 DEBUG = True
 SCHEMA_NAME = "voice_prompt_compiler_output"
@@ -406,9 +406,9 @@ def main() -> int:
         print(sd.query_devices())
         return 0
 
-    if DEEPSEEK_API_KEY == "PASTE_DEEPSEEK_KEY_HERE":
+    if not DEEPSEEK_API_KEY:
         print(
-            "Error: set DEEPSEEK_API_KEY in environment or write it into mic_prompt_deepseek.py.",
+            "Error: set DEEPSEEK_API_KEY in the environment before running this script.",
             file=sys.stderr,
         )
         return 1

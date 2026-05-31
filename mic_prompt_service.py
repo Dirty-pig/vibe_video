@@ -336,7 +336,7 @@ class PromptCompilerService:
 def main() -> int:
     configure_stdio_encoding()
 
-    if compiler.DEEPSEEK_API_KEY == "PASTE_DEEPSEEK_KEY_HERE":
+    if not compiler.DEEPSEEK_API_KEY:
         print("DeepSeek API key is not configured.", file=sys.stderr, flush=True)
         return 1
 
