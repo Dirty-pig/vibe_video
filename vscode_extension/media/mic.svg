@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <linearGradient id="gradMic" x1="40" y1="120" x2="170" y2="360" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#5B5CFF"/>
+      <stop offset="1" stop-color="#3B2DDB"/>
+    </linearGradient>
+    <linearGradient id="gradWave" x1="180" y1="220" x2="298" y2="220" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#19C3B2"/>
+      <stop offset="1" stop-color="#32D07A"/>
+    </linearGradient>
+    <linearGradient id="gradDoc" x1="305" y1="110" x2="460" y2="390" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#173B8C"/>
+      <stop offset="1" stop-color="#0A1E5F"/>
+    </linearGradient>
+  </defs>
+  <rect x="58" y="130" width="92" height="150" rx="46" fill="url(#gradMic)"/>
+  <path d="M40 238V247C40 293 77 330 123 330H126C172 330 209 293 209 247V238" stroke="url(#gradMic)" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M125 330V377" stroke="url(#gradMic)" stroke-width="18" stroke-linecap="round"/>
+  <path d="M90 387H160" stroke="url(#gradMic)" stroke-width="18" stroke-linecap="round"/>
+  <rect x="180" y="240" width="10" height="36" rx="5" fill="url(#gradWave)"/>
+  <rect x="200" y="225" width="10" height="66" rx="5" fill="url(#gradWave)"/>
+  <rect x="220" y="205" width="10" height="106" rx="5" fill="url(#gradWave)"/>
+  <rect x="240" y="225" width="10" height="66" rx="5" fill="url(#gradWave)"/>
+  <path d="M268 258H294" stroke="url(#gradWave)" stroke-width="18" stroke-linecap="round"/>
+  <path d="M282 242L302 258L282 274" stroke="url(#gradWave)" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M331 112H417L460 155V372C460 393 443 410 422 410H331C310 410 293 393 293 372V150C293 129 310 112 331 112Z" stroke="url(#gradDoc)" stroke-width="16" stroke-linejoin="round"/>
+  <path d="M417 112V145C417 151 422 156 428 156H460" stroke="url(#gradDoc)" stroke-width="16" stroke-linejoin="round"/>
+  <path d="M343 183C353 183 356 188 356 197V217C356 226 359 230 367 232C359 234 356 238 356 247V267C356 276 353 281 343 281" stroke="url(#gradWave)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M410 183C400 183 397 188 397 197V217C397 226 394 230 386 232C394 234 397 238 397 247V267C397 276 400 281 410 281" stroke="url(#gradWave)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="376" cy="232" r="4.5" fill="url(#gradWave)"/>
+  <circle cx="389" cy="232" r="4.5" fill="url(#gradWave)"/>
+  <path d="M332 325H392" stroke="url(#gradDoc)" stroke-width="12" stroke-linecap="round"/>
+  <path d="M332 351H378" stroke="url(#gradDoc)" stroke-width="12" stroke-linecap="round"/>
+  <path d="M385 372L372 384L385 396" stroke="url(#gradDoc)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M414 372L427 384L414 396" stroke="url(#gradDoc)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M402 400L410 368" stroke="url(#gradDoc)" stroke-width="12" stroke-linecap="round"/>
+</svg>

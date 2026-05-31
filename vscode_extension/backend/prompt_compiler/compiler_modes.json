@@ -1,0 +1,69 @@
+{
+  "name": "voice_prompt_compiler_modes",
+  "version": "1.0",
+  "language": "zh-CN",
+  "prompt_size_policy": {
+    "small": "单一目标、上下文少时，compiled_prompt 用 1 到 2 句完成。",
+    "medium": "单一主任务但存在若干约束时，compiled_prompt 用 2 到 4 句完成。",
+    "large": "多约束、多输入或明显多步骤任务时，compiled_prompt 可分点，但保持紧凑。"
+  },
+  "router": {
+    "auto_detect": true,
+    "priority": ["debug", "feature", "refactor", "plan", "research", "writing"],
+    "manual_prefix": {
+      "debug": ["debug:", "排错:", "报错:", "bug:"],
+      "feature": ["feature:", "实现:", "新增:", "功能:"],
+      "refactor": ["refactor:", "重构:", "优化结构:"],
+      "writing": ["writing:", "润色:", "改写:", "总结:"],
+      "research": ["research:", "调研:", "分析:", "对比:"],
+      "plan": ["plan:", "规划:", "路线:", "方案:"]
+    },
+    "auto_rules": {
+      "debug": [
+        "出现报错、bug、跑不起来、结果不对、日志、环境问题、依赖冲突、为什么不运行时，优先选择 debug。",
+        "如果用户同时提到想加功能和当前无法运行，优先选择 debug。"
+      ],
+      "feature": [
+        "用户想实现、新增、接入、写一个功能，且没有明显报错或失败现象时，选择 feature。"
+      ],
+      "refactor": [
+        "用户想整理结构、拆分模块、降低耦合、优化代码组织，且要求不改变功能时，选择 refactor。"
+      ],
+      "writing": [
+        "用户想润色、改写、总结、压缩、写论文、写邮件、写文档时，选择 writing。"
+      ],
+      "research": [
+        "用户想调研、对比、分析公司、行业、技术路线、产品或资料时，选择 research。"
+      ],
+      "plan": [
+        "用户有一个想法、项目或目标，需要拆解路线、MVP、阶段计划或架构设计时，选择 plan。"
+      ]
+    }
+  },
+  "modes": {
+    "debug": {
+      "goal": "将口语化问题改写成适合代码 Agent 定位问题的 Prompt。",
+      "template": "请帮我排查这个问题：{task_goal}。当前现象：{current_state}。怀疑点：{suspicions}。约束：{constraints}。先看相关代码、日志或配置，再判断原因；优先给最小修复方案。若问题简单，直接给原因和最小修改；若问题复杂，再补充涉及文件与验证方式。"
+    },
+    "feature": {
+      "goal": "将口语化需求改写成适合代码 Agent 实现功能的 Prompt。",
+      "template": "请在当前项目中实现这个功能：{task_goal}。已有条件：{current_state}。输入输出：{inputs}。约束：{constraints}。先理解现有结构，再用最小侵入方式实现，不要引入不必要的复杂依赖。若需求较小，直接给实现和必要修改；若需求较复杂，再补充运行与测试方式。"
+    },
+    "refactor": {
+      "goal": "将口语化重构需求改写成适合代码 Agent 执行的 Prompt。",
+      "template": "请对当前项目做受控重构：{task_goal}。当前结构问题：{current_state}。约束：{constraints}。不要改变现有功能行为，先判断真正需要调整的结构点，再给出小步修改方案。若改动范围不大，直接给最小重构方案；若范围较大，再分步骤说明并补充回归验证建议。"
+    },
+    "writing": {
+      "goal": "将口语化写作需求改写成清晰、收敛的写作 Prompt。",
+      "template": "请根据以下要求完成写作或改写：{task_goal}。原始内容或上下文：{current_state}。写作约束：{constraints}。请保留原意，语言自然，减少模板化表达和空话。若需求简单，直接给最终版本；若约束较多，再说明输出格式：{expected_output}。"
+    },
+    "research": {
+      "goal": "将口语化调研需求改写成适合分析型 AI 执行的 Prompt。",
+      "template": "请围绕这个问题做调研和分析：{task_goal}。比较对象或背景：{current_state}。关注维度：{constraints}。先给结论，再给依据，并区分事实、推测和建议。若问题范围较小，保持结论精简；若范围较大，再补充风险与可执行建议。"
+    },
+    "plan": {
+      "goal": "将口语化想法改写成适合 AI 拆解任务的 Prompt。",
+      "template": "请把这个想法整理成可执行方案：{task_goal}。现有条件：{current_state}。约束和偏好：{constraints}。优先考虑最小可用版本，不要过度设计。若只是小需求，直接给最小实现路径；若是完整项目，再补充阶段拆解、风险点和暂不建议做的复杂功能。"
+    }
+  }
+}

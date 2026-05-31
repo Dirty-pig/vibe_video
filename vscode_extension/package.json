@@ -1,0 +1,83 @@
+{
+  "name": "voice-prompt-demo",
+  "displayName": "Voice Prompt Demo",
+  "description": "Record speech, compile an agent prompt, copy it to the clipboard, and preview it in a VS Code panel.",
+  "version": "0.0.2",
+  "publisher": "local",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "voicePrompt.openPanel",
+        "title": "Voice Prompt: Open Panel"
+      },
+      {
+        "command": "voicePrompt.toggleRecording",
+        "title": "Voice Prompt: Toggle Recording"
+      },
+      {
+        "command": "voicePrompt.copyPrompt",
+        "title": "Voice Prompt: Copy Prompt"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "voicePrompt",
+          "title": "Voice Prompt",
+          "icon": "media/mic.svg"
+        }
+      ]
+    },
+    "views": {
+      "voicePrompt": [
+        {
+          "id": "voicePrompt.sidebar",
+          "name": "Voice Prompt",
+          "type": "webview",
+          "icon": "media/mic.svg"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "voicePrompt.toggleRecording",
+        "key": "ctrl+alt+r",
+        "mac": "cmd+alt+r"
+      }
+    ],
+    "configuration": {
+      "title": "Voice Prompt",
+      "properties": {
+        "voicePrompt.backendCommand": {
+          "type": "string",
+          "default": "",
+          "description": "Optional custom command used to start the Python voice prompt backend. Leave empty to auto-detect the yolo environment Python."
+        },
+        "voicePrompt.autoCopyToClipboard": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically copy the compiled prompt to the clipboard after recording stops."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.12",
+    "@types/vscode": "^1.90.0",
+    "typescript": "^5.4.5"
+  }
+}

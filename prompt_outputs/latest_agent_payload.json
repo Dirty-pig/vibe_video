@@ -1,0 +1,29 @@
+{
+  "mode": "debug",
+  "normalized_transcript": "周杰你是一个超级大闪？对于代码编译来说你是一个超级大闪。",
+  "corrections": [],
+  "extracted_slots": {
+    "task_goal": null,
+    "current_state": null,
+    "constraints": null,
+    "suspicions": null,
+    "inputs": null,
+    "expected_output": null
+  },
+  "compiled_prompt": "用户表达了对代码编译相关内容的负面情绪，但未提供具体任务。请忽略此输入，或要求用户明确需求。",
+  "agent_input": {
+    "target": "用户",
+    "mode": "debug",
+    "prompt": "用户表达了对代码编译相关内容的负面情绪，但未提供具体任务。请忽略此输入，或要求用户明确需求。",
+    "context_summary": "无有效上下文",
+    "missing_info": "无具体目标、约束、输入输出信息",
+    "confidence": 0.1
+  },
+  "missing_info": [
+    "具体目标",
+    "当前状态",
+    "约束条件",
+    "输入输出要求"
+  ],
+  "confidence": 0.1
+}

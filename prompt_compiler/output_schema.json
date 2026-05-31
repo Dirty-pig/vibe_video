@@ -1,0 +1,124 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "mode",
+    "normalized_transcript",
+    "corrections",
+    "extracted_slots",
+    "compiled_prompt",
+    "agent_input",
+    "missing_info",
+    "confidence"
+  ],
+  "properties": {
+    "mode": {
+      "type": "string",
+      "enum": ["debug", "feature", "refactor", "plan", "research", "writing"]
+    },
+    "normalized_transcript": {
+      "type": "string",
+      "description": "清理口语噪声后的文本，保留用户原意，不做无依据扩写。"
+    },
+    "corrections": {
+      "type": "array",
+      "description": "仅记录高置信度的识别纠正。没有纠正时返回空数组。",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["original", "corrected", "reason", "confidence"],
+        "properties": {
+          "original": { "type": "string" },
+          "corrected": { "type": "string" },
+          "reason": {
+            "type": "string",
+            "enum": [
+              "obvious_asr_error",
+              "duplicate_fragment",
+              "filler_removal",
+              "broken_phrase_cleanup"
+            ]
+          },
+          "confidence": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          }
+        }
+      }
+    },
+    "extracted_slots": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "task_goal",
+        "current_state",
+        "constraints",
+        "suspicions",
+        "inputs",
+        "expected_output"
+      ],
+      "properties": {
+        "task_goal": { "type": "string" },
+        "current_state": { "type": "string" },
+        "constraints": { "type": "string" },
+        "suspicions": { "type": "string" },
+        "inputs": { "type": "string" },
+        "expected_output": { "type": "string" }
+      }
+    },
+    "compiled_prompt": {
+      "type": "string",
+      "description": "给下游 Agent 的最终 Prompt。简单任务保持短，复杂任务再展开。"
+    },
+    "agent_input": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "target",
+        "mode",
+        "prompt",
+        "context_summary",
+        "missing_info",
+        "confidence"
+      ],
+      "properties": {
+        "target": {
+          "type": "string",
+          "description": "下游 Agent 类型。默认用于通用代码 Agent。"
+        },
+        "mode": {
+          "type": "string",
+          "enum": ["debug", "feature", "refactor", "plan", "research", "writing"]
+        },
+        "prompt": {
+          "type": "string",
+          "description": "可直接投喂给下游 Agent 的主 Prompt。"
+        },
+        "context_summary": {
+          "type": "string",
+          "description": "给下游 Agent 的简要上下文摘要。"
+        },
+        "missing_info": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    },
+    "missing_info": {
+      "type": "array",
+      "description": "只记录真正阻塞执行的关键信息。",
+      "items": { "type": "string" }
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    }
+  }
+}

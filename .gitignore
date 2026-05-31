@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+.venv/
+venv/
+env/
+
+transcripts_cache/
+
+vscode_extension/node_modules/
+vscode_extension/out/
+
+.DS_Store
+Thumbs.db
